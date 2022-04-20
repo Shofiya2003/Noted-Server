@@ -19,7 +19,7 @@ const ifExists = async (user_id, folder_name) => {
     }
   );
   console.log(folder);
-  return folder;
+  return folder.folders;
 };
 
 const findFolder=async (user_id,folder_name,folder_id)=>{

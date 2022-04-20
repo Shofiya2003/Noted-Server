@@ -6,10 +6,13 @@ let validators = {};
 
 funcs.handlerequest = (func) => async (req, res, next) => {
   const base = req.baseUrl.split("/")[3].toString();
-  const pathname = req._parsedUrl.pathname.toString();
+  let pathname = req._parsedUrl.pathname.toString();
   console.log(base);
   const method = req.method.toLowerCase().toString();
-  
+  console.log(pathname);
+  if(base==='video' && method=='get'){
+    pathname='/videoid';
+  }
   try {
     console.log(path.join(__dirname, "..", `${base}/validators.js`));
     if (!validators[base]) {
@@ -18,6 +21,7 @@ funcs.handlerequest = (func) => async (req, res, next) => {
           path.join(__dirname, "..", "utils", "validators", `${base}.js`)
         )
       ) {
+        
         validators[base] = require(path.join(
           __dirname,
           "..",
@@ -25,8 +29,10 @@ funcs.handlerequest = (func) => async (req, res, next) => {
           "validators",
           `${base}.js`
         ));
+        
       }
     }
+   
     if (
       !(
         validators &&
@@ -38,10 +44,10 @@ funcs.handlerequest = (func) => async (req, res, next) => {
       throw {
         msg:
           `No schema found for ${pathname} of ${method} protocol of ${base} route file.` +
-          ` A route ${endPointName} has to be declared in utils/validators/${base}.js for ` +
-          `${protocolName} protocol`,
+          ` A route ${pathname} has to be declared in utils/validators/${base}.js for ` +
+          `${method} protocol`,
         location: path.basename(__filename),
-        status: config.get("httpStatusCodes.badRequest"),
+        status: 400
       };
     //Validating the request
     await Promise.all(
@@ -56,8 +62,8 @@ funcs.handlerequest = (func) => async (req, res, next) => {
     if (err.errors && err.errors.length) {
       err.status = 400;
     }
-
-    res.status(err.status || 500).json({ message: err.errors[0].msg || err });
+    console.log(err);
+    res.status(err.status || 500).json({ message: (err.errors && err.errors[0].msg) || (err.message || err.msg) || err });
   }
 };
 

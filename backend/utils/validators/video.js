@@ -13,6 +13,8 @@ const validators = {
     ],
   },
   get: {
-    "/": [param("video_id").exists().withMessage("param video_id is missing")],
+    "/videoid": [param("video_id").exists().withMessage("param video_id is missing")],
   },
 };
+
+module.exports=validators;
