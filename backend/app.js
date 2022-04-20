@@ -11,7 +11,7 @@ app.use(cors());
 app.use(bodyparser.json());
 app.use("/api", api);
 
-const uri = process.env.MONGODB_URI;
+const uri = "mongodb://localhost:27017/notedDB";
 
 //Connect to monodb atlas
 mongoose

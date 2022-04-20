@@ -2,10 +2,11 @@ const brcrypt = require("bcrypt");
 const User = require("../../models/user");
 const jwt = require("jsonwebtoken");
 const {createFolder}=require('../../utils/folder');
+const funcs=require('../../routes/requestHandler');
 
-const signup = async (req, res) => {
+const signup = funcs.handlerequest(async (req, res,next) => {
   const { email, username, password: plainTextPassword } = req.body;
-
+  
   const password = await brcrypt.hash(plainTextPassword, 10);
 
   try {
@@ -46,7 +47,7 @@ const signup = async (req, res) => {
 
     
   }
-};
+});
 
 
 

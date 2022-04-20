@@ -50,3 +50,5 @@ put: {
       ]
   },
 };
+
+module.exports=validators;
