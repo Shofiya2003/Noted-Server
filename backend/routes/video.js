@@ -3,12 +3,6 @@ const router = express.Router();
 const requestHandler = require("./requestHandler");
 const video = require("../services/video");
 
-const {
-  readnotes,
-  deleteVideo,
-  editName,
-  changeFolder,
-} = require("../controllers/notes/video");
 router.get(
   "/:video_id",
   requestHandler.handlerequest(async (req, res, next) => {

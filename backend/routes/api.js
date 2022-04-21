@@ -15,7 +15,7 @@ const search = require("./search");
 
 router.use('/v1/auth',auth);
 router.use("/v1/resetpassword", changepassword);
-router.use("/v1/notes/timestamp", timestamp);
+router.use("/v1/notes/timestamp",authMiddleware, timestamp);
 router.use("/v1/video",authMiddleware,video);
 router.use("/v1/folder", folders);
 router.use("/v1/videos", videos);

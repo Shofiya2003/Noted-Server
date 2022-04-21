@@ -13,4 +13,9 @@ funcs.update=async ({query,updateFeat})=>{
     return video;
 }
 
+funcs.createVideo=async ({feat})=>{
+    const video=await Video.create(feat);
+    return video;
+}
+
 module.exports=funcs;
