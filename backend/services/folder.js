@@ -5,7 +5,8 @@ const funcs = {};
 
 funcs.createFolder = async ({ user_id, body: { folder_name } }) => {
   const folder = await folderManager.findFolder(user_id, folder_name);
-  if (folder.folders.length !== 0) {
+  console.log(folder);
+  if (folder) {
     throw {
       message: "folder already exist",
       status: 400,
@@ -16,6 +17,7 @@ funcs.createFolder = async ({ user_id, body: { folder_name } }) => {
 };
 
 funcs.getFolders = async ({ user_id, query: { deleted } }) => {
+    console.log(user_id);
   const folders = await folderManager.getFolders(user_id, deleted);
   return folders;
 };
@@ -47,7 +49,7 @@ funcs.deleteFolder = async ({ user_id, body: { folder_id, folder_name } }) => {
   });
 };
 
-funcs.editName = ({user_id,body:{new_folder_name, old_folder_name, folder_id}}) => {
+funcs.editName = async ({user_id,body:{new_folder_name, old_folder_name, folder_id}}) => {
     const folder = await folderManager.findFolderByIdAndName(
         user_id,
         folder_id,
@@ -81,3 +83,5 @@ funcs.editName = ({user_id,body:{new_folder_name, old_folder_name, folder_id}}) 
       }})
     
 };
+
+module.exports=funcs;

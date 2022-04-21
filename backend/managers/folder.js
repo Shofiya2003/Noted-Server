@@ -47,7 +47,7 @@ funcs.findFolder=async (user_id, folder_name) => {
   }
 
 
-  funcs.updateFolder=({query,updateFeat})=>{
+  funcs.updateFolder=async ({query,updateFeat})=>{
        const user=await User.findOneAndUpdate(query,{$set:updateFeat});
        return user;
   }
@@ -61,7 +61,8 @@ funcs.findFolder=async (user_id, folder_name) => {
     await user.save();
   }
 
-  funcs.getFolders=async ({user_id:_id,deleted:is_deleted})=>{
+  funcs.getFolders=async ({user_id,deleted:is_deleted})=>{
+    console.log(user_id);
     const folders = await User.find(
       { _id },
       {
@@ -77,6 +78,6 @@ funcs.findFolder=async (user_id, folder_name) => {
       }
     ).sort({ "folders.createdAt": 1 });
     console.log(folders);
-    return folders[0].folders;
+    return folders;
   }
   module.exports=funcs;

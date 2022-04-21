@@ -11,11 +11,11 @@ const validators = {
       body("timestamp")
         .exists()
         .withMessage("timestamp is missing")
-        .isByteLength({ min: 8, max: 8 }),
+        .isByteLength({ min: 0, max: 8 }),
     ],
 
     "/create": [
-      body("videourl")
+      body("video_url")
         .exists()
         .withMessage("videourl is missing")
         .isURL()
@@ -23,7 +23,8 @@ const validators = {
       body("timestamp")
         .exists()
         .withMessage("timestamp is missing")
-        .isByteLength({ min: 8, max: 8 }),
+        .isByteLength({ min: 0, max: 8 })
+        .withMessage("timestamp is invalid"),
       body("videoname").exists().withMessage("video name is missing"),
     ],
 
@@ -32,7 +33,7 @@ const validators = {
         body("timestamp")
         .exists()
         .withMessage("timestamp is missing")
-        .isByteLength({ min: 8, max: 8 })
+        .isByteLength({ min: 0, max: 8 })
         .withMessage("timestamp is invalid")
     ],
     
@@ -44,7 +45,7 @@ put: {
         body("timestamp")
         .exists()
         .withMessage("timestamp is missing")
-        .isByteLength({ min: 8, max: 8 })
+        .isByteLength({ min: 0, max: 8 })
         .withMessage("timestamp is invalid")
         
       ]

@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const Video = require("../models/video");
 const funcs = {};
-const authByToken = (req) => {
+funcs.authByToken = (req) => {
   const token = req.headers["authorization"].split(" ")[1];
 
   const user = jwt.verify(token, process.env.JWT_AUTH_SECRET);

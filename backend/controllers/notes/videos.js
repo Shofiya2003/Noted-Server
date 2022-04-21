@@ -1,11 +1,11 @@
 
 const Video = require("../../models/video");
 const url = require("url");
-const { authByToken } = require("../../utils/auth");
+const func = require("../../utils/auth");
 const readallvideos = async (req,res) => {
 
   try {
-    const user_id=authByToken(req);
+    const user_id=func.authByToken(req);
     const page=parseInt(req.query.page);
     const limit=parseInt(req.query.limit);
     const deleted=req.query.deleted;

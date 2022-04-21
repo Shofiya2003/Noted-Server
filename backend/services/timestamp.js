@@ -1,5 +1,6 @@
 const { formattimestamp } = require("../utils/notes");
 const videoManager = require("../managers/video");
+const url=require('url');
 const funcs = {};
 
 funcs.readtimestampnotes = async ({ video_url, timestamp, user_id }) => {
@@ -24,7 +25,8 @@ funcs.readtimestampnotes = async ({ video_url, timestamp, user_id }) => {
 };
 
 funcs.updateNotes = async ({ video_name, timestamp, content, user_id }) => {
-  const video = await videoManager.findVideo({ video_id, user_id });
+  const video = await videoManager.findVideo({ video_name, user_id });
+  console.log(video);
   if (!video) {
     throw {
       message: "video not found",
@@ -42,7 +44,7 @@ funcs.updateNotes = async ({ video_name, timestamp, content, user_id }) => {
   const updatednotes = getUpdatedNotes(video.notes, timestamp, content);
 
   await videoManager.update({
-    query: { video_id, user_id },
+    query: { video_name, user_id },
     updateFeat: {
       notes: updatednotes,
     },
@@ -99,7 +101,7 @@ funcs.deleteTimestamp = async ({ user_id, body: { video_id, timestamp } }) => {
       status: 404,
     };
   }
-  const updatednotes = delteNotes(video.notes, timestamp);
+  const updatednotes = deleteNotes(video.notes, timestamp);
   await videoManager.update({
     query: { video_id, user_id },
     updateFeat: {
@@ -116,13 +118,13 @@ const getUpdatedNotes = (notes, timestamp, content) => {
 
 const getNotesOfTimestamp = (notes, timestamp) => {
   if (notes.has(timestamp)) {
-    return video.notes.get(timestamp);
+    return notes.get(timestamp);
   }
 };
 
-const delteNotes = (notes) => {
+const deleteNotes = (notes,timestamp) => {
   notes.delete(timestamp);
   return notes;
 };
 
-module.exports = funcs;
+module.exports=funcs;
