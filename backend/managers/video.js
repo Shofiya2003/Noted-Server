@@ -1,21 +1,29 @@
-const Video=require('../models/video');
-const funcs={};
+const Video = require("../models/video");
+const funcs = {};
 
-funcs.findVideo=async (query)=>{
-    return await Video.findOne(query);
-}
+funcs.findVideo = async (query) => {
+  return await Video.findOne(query);
+};
 
-funcs.update=async ({query,updateFeat})=>{
-    const video=await Video.findOneAndUpdate(query,{
-        $set:updateFeat
-    });
-    console.log(video);
-    return video;
-}
+funcs.update = async ({ query, updateFeat }) => {
+  const video = await Video.findOneAndUpdate(query, {
+    $set: updateFeat,
+  });
+  console.log(video);
+  return video;
+};
 
-funcs.createVideo=async ({feat})=>{
-    const video=await Video.create(feat);
-    return video;
-}
+funcs.updatMany = async ({ query, updateFeat }) => {
+  await Video.updateMany(query, {
+    $set: updateFeat,
+  });
 
-module.exports=funcs;
+  return;
+};
+
+funcs.createVideo = async ({ feat }) => {
+  const video = await Video.create(feat);
+  return video;
+};
+
+module.exports = funcs;
