@@ -8,6 +8,8 @@ const validators = {
       body("folder_name").exists().withMessage("folder name is missing"),
     ],
     "/editname": [
+      body("folder_id")
+      .exists().withMessage("folder_id is missing"),
       body("new_folder_name")
         .exists()
         .withMessage("new folder name is missing"),

@@ -43,6 +43,7 @@ funcs.findFolder=async (user_id, folder_name) => {
           },
         }
       );
+      console.log(folder);
     return folder.folders[0];
   }
 
@@ -64,7 +65,7 @@ funcs.findFolder=async (user_id, folder_name) => {
   funcs.getFolders=async ({user_id,deleted:is_deleted})=>{
     console.log(user_id);
     const folders = await User.find(
-      { _id },
+      { _id:user_id },
       {
         folders: {
           $filter: {

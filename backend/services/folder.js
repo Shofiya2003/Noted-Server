@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const folderManager = require("../managers/folder");
 const videoManager = require("../managers/video");
+const mongoose=require('mongoose');
 const funcs = {};
 
 funcs.createFolder = async ({ user_id, body: { folder_name } }) => {
@@ -18,11 +19,12 @@ funcs.createFolder = async ({ user_id, body: { folder_name } }) => {
 
 funcs.getFolders = async ({ user_id, query: { deleted } }) => {
     console.log(user_id);
-  const folders = await folderManager.getFolders(user_id, deleted);
+  const folders = await folderManager.getFolders({user_id, deleted});
   return folders;
 };
 
 funcs.deleteFolder = async ({ user_id, body: { folder_id, folder_name } }) => {
+  folder_id=mongoose.Types.ObjectId(folder_id)
   const folder = await folderManager.findFolderByIdAndName(
     user_id,
     folder_id,
@@ -50,10 +52,11 @@ funcs.deleteFolder = async ({ user_id, body: { folder_id, folder_name } }) => {
 };
 
 funcs.editName = async ({user_id,body:{new_folder_name, old_folder_name, folder_id}}) => {
-    const folder = await folderManager.findFolderByIdAndName(
+    folder_id=mongoose.Types.ObjectId(folder_id)
+    let folder = await folderManager.findFolderByIdAndName(
         user_id,
         folder_id,
-        folder_name
+        old_folder_name
       );
     if (!folder) {
         throw {
@@ -63,7 +66,8 @@ funcs.editName = async ({user_id,body:{new_folder_name, old_folder_name, folder_
     }
 
     folder=await folderManager.findFolder(user_id,new_folder_name);
-    if(!folder){
+   
+    if(folder){
         throw {
             message: `folder with name ${new_folder_name} already exist`,
             status: 404,
@@ -71,7 +75,7 @@ funcs.editName = async ({user_id,body:{new_folder_name, old_folder_name, folder_
     }
 
     await folderManager.updateFolder({
-        query:{ _id: _id, "folders._id": folder_id},
+        query:{ _id: user_id, "folders._id": folder_id},
         updateFeat:{
         "folders.$.folder_name": new_folder_name,
       }});
