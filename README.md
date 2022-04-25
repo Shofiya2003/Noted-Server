@@ -1,6 +1,6 @@
 # NOTED Server
 
-Note
+Noted is a chrome extension to take notes on a YouTube Video without switching the tab.User can record time-stamp and add notes to it. All your video notes are available on the Noted Dashboard.
 
 ## Getting Started
 
