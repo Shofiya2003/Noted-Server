@@ -21,6 +21,13 @@ funcs.createUser=async ({email,username,password})=>{
      return {newUser,token};
 }
 
+funcs.update=async ({query,updateFeat})=>{
+    const user=await User.findOneAndUpdate(query,{
+        $set:updateFeat
+    });
+    return user;
+}
+
 
 
 module.exports=funcs;

@@ -18,6 +18,10 @@ const validators = {
         .withMessage("email is invalid"),
       body("password").exists().withMessage("password is missing"),
     ],
+    "/changepassword":[
+      body("oldPassword").exists().withMessage("password is missing"),
+      body("newPassword").exists().withMessage("new password is missing"),
+    ]
   },
 };
 

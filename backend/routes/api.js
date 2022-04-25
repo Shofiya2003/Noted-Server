@@ -5,7 +5,6 @@ const authMiddleware=require('../middlewares/auth');
 
 // routes
 const auth=require('./auth');
-const changepassword = require("./changepassword");
 const video = require("./video");
 const folders = require("./folders");
 const videos = require("./videos");
@@ -14,7 +13,6 @@ const search = require("./search");
 //Middleware
 
 router.use('/v1/auth',auth);
-router.use("/v1/resetpassword", changepassword);
 router.use("/v1/notes/timestamp",authMiddleware, timestamp);
 router.use("/v1/video",authMiddleware,video);
 router.use("/v1/folder",authMiddleware, folders);
