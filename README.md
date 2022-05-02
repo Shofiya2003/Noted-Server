@@ -24,5 +24,5 @@ npm run dev
 ```
 
 ## API Documentation
+<a href="http://example.com/" target="_blank">Postman Documentation</a>
 
-[Postman Documentation](https://documenter.getpostman.com/view/17098275/Uyr8nxuR#53467c85-4451-4e63-a40c-f76a3d384ae7)
