@@ -8,6 +8,9 @@ Noted is a chrome extension to take notes on a YouTube Video without switching t
 ![Noted Chrome Extension](https://user-images.githubusercontent.com/86974918/165093255-f8aae44f-07e9-4fe9-8573-4211d68c5186.png)
 
 
+## Demo Video
+
+![Demo Video](https://www.youtube.com/watch?v=4Vc3vuagFtc)
 
 ## Getting Started
 
