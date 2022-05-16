@@ -1,16 +1,33 @@
-# NOTED Server
+# NOTED 📘 
 
 Noted is a chrome extension to take notes on a YouTube Video without switching the tab.User can record time-stamp and add notes to it. All your video notes are available on the Noted Dashboard.
 
-![Noted Dashboard](https://user-images.githubusercontent.com/86974918/165093009-00586261-db5a-4226-9e4e-cf0e05e2a726.png)
-<br>
-<br>
-![Noted Chrome Extension](https://user-images.githubusercontent.com/86974918/165093255-f8aae44f-07e9-4fe9-8573-4211d68c5186.png)
+## What problem do we solve? ✔️
+Studying through YouTube can be a cumbersome task. Taking screenshots of important sections and switching tabs to make notes makes us less productive. Noted allows user to bookmark a time stamp, write notes. Also the user can categorize their notes into folders and edit them on dashboard.
 
+## Features 🔥
+- Mark time-stamp and write notes on them
+- Text, bullet points, table and code can be included in notes
+- Edit notes
+- Create folders and rename them
+- Categorize video notes into folders
+- View the video notes and edit them on dashboard
+- Rename the video notes
 
-## Demo Video
+## Demo Video 🎞️
 
-![Demo Video](https://www.youtube.com/watch?v=4Vc3vuagFtc)
+[Demo Video](https://www.youtube.com/watch?v=4Vc3vuagFtc)
+
+## Tech Stack
+#### Backend
+- NodeJS
+- ExpressJS
+- MongoDB
+
+#### Frontend
+- ReactJS
+- TailwindCSS
+
 
 ## Getting Started
 
@@ -28,4 +45,6 @@ npm run dev
 
 ## API Documentation
 <a href="https://documenter.getpostman.com/view/17098275/Uyr8nxuR#53467c85-4451-4e63-a40c-f76a3d384ae7" target="_blank">Postman Documentation</a>
+
+
 
