@@ -32,6 +32,8 @@ funcs.deleteVideo = async ({ video_id, user_id }) => {
 
   return {};
 };
+
+
 funcs.editName = async ({ video_id, user_id, new_video_name }) => {
   const video = await videoManager.update({
     query: { video_id, user_id },
@@ -50,7 +52,7 @@ funcs.editName = async ({ video_id, user_id, new_video_name }) => {
   return {};
 };
 
-const changeFolder=async ({video_id, user_id, folder_name})=>{
+funcs.changeFolder=async ({video_id, user_id, folder_name})=>{
     const folder=folderManager.findFolder(user_id,folder_name);
     if(folder.length===0){
         throw{
@@ -77,5 +79,22 @@ const changeFolder=async ({video_id, user_id, folder_name})=>{
     
 
 }
+
+funcs.getAll=async ({user_id,query})=>{
+    const page=parseInt(query.page);
+    const limit=parseInt(query.limit);
+    const deleted=query.deleted;
+    const startIndex = (page - 1) * limit
+    const endIndex = page * limit
+    const totalDocuments= await Video.countDocuments({user_id });
+
+    const result = await Video.find({user_id,is_deleted:deleted==='true' },{ video_id: 1, video_name: 1,video_url:1 }).skip(startIndex).limit(limit);
+    if (!result) {
+      res.status(404).json({ message: "no video not found" });
+    } else {
+      res.status(200).json({ message: "success",result });
+    }
+  } 
+
 
 module.exports = funcs;

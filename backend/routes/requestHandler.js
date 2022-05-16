@@ -7,15 +7,15 @@ let validators = {};
 funcs.handlerequest = (func) => async (req, res, next) => {
   const base = req.baseUrl.split("/")[3].toString();
   let pathname = req._parsedUrl.pathname.toString();
-  console.log(base);
   const method = req.method.toLowerCase().toString();
-  console.log(pathname);
   if(base==='video' && method=='get'){
     pathname='/videoid';
   }
   try {
     console.log(path.join(__dirname, "..", `${base}/validators.js`));
+    //check if the validators object for the current base already exists
     if (!validators[base]) {
+      //check if the validators for the current endpoint base have beeen made
       if (
         fs.existsSync(
           path.join(__dirname, "..", "utils", "validators", `${base}.js`)
@@ -33,6 +33,7 @@ funcs.handlerequest = (func) => async (req, res, next) => {
       }
     }
    
+    //check if validators for the endpoint exists
     if (
       !(
         validators &&
@@ -55,6 +56,7 @@ funcs.handlerequest = (func) => async (req, res, next) => {
         validation.run(req)
       )
     );
+    //throw errors for the validation err;
     validationResult(req).throw();
     await func(req, res);
   } catch (err) {
