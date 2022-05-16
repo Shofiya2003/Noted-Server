@@ -18,7 +18,7 @@ Studying through YouTube can be a cumbersome task. Taking screenshots of importa
 
 [Demo Video](https://www.youtube.com/watch?v=4Vc3vuagFtc)
 
-## Tech Stack
+## Tech Stack 💻
 #### Backend
 - NodeJS
 - ExpressJS
@@ -29,7 +29,7 @@ Studying through YouTube can be a cumbersome task. Taking screenshots of importa
 - TailwindCSS
 
 
-## Getting Started
+## Getting Started 😎
 
 ### Run the Express server
 ```
@@ -43,8 +43,12 @@ To debug the Express server with auto-restart,
 npm run dev
 ```
 
-## API Documentation
+## API Documentation 📃
 <a href="https://documenter.getpostman.com/view/17098275/Uyr8nxuR#53467c85-4451-4e63-a40c-f76a3d384ae7" target="_blank">Postman Documentation</a>
 
-
+## Features to be added 💭
+- Add a shareable link 
+- Export videonotes to notion
+- Make video notes public
+- Add YouTube screenshots to the video notes
 
