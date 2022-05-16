@@ -47,7 +47,7 @@ npm run dev
 <a href="https://documenter.getpostman.com/view/17098275/Uyr8nxuR#53467c85-4451-4e63-a40c-f76a3d384ae7" target="_blank">Postman Documentation</a>
 
 ## Features to be added 💭
-- Add a shareable link 
+- Get a Shareable link to video notes
 - Export videonotes to notion
 - Make video notes public
 - Add YouTube screenshots to the video notes
