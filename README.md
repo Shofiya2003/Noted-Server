@@ -43,6 +43,9 @@ To debug the Express server with auto-restart,
 npm run dev
 ```
 
+## 
+![image](https://user-images.githubusercontent.com/86974918/186423529-1a22ffc1-52c6-482c-8a56-961663ca795d.png)
+
 ## API Documentation 📃
 <a href="https://documenter.getpostman.com/view/17098275/Uyr8nxuR#53467c85-4451-4e63-a40c-f76a3d384ae7" target="_blank">Postman Documentation</a>
 
